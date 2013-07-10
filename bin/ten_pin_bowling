@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+require File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'ten_pin_bowling'))
+
+def tpb_help
+  <<EOF
+Please type the score you have made with your last ten pin bowling game.
+Just type the score of each ball separated with a blank. Missing balls will be filled in with 0 value.
+Only the first 20 balls are accepted. If the last 'frame' is a strike two more balls are needed (22).
+If the last 'frame' is a spare one more ball is needed (21).
+You'll then see the overall score of the game.
+For a strike either a 10 or a 'X' is accepted.
+For a 0 ball either a 0 or any non number character is accepted.
+All other inputs are figures from 1..9.
+EOF
+end
+
+def read_from_stdin
+  ARGF.readline.split(" ")
+end
+if ARGV.length == 0 then
+  puts tpb_help
+  game=TenPinBowling::Frames.from_balls(*read_from_stdin)
+elsif ARGV[0].downcase=="help" or ARGV[0].downcase=="-h" or ARGV[0].downcase=="--help"
+  puts tpb_help
+else
+  game=TenPinBowling::Frames.from_balls(*ARGV)
+end
+if game then
+  puts "The accumulated score of this game is #{game.score_accumulated 10}"
+end
