@@ -15,11 +15,16 @@ Comments are nevertheless wellcome ;-).
 
 Either just install the gemfile as follows:
 
-<blockquote>gem install</blockquote>
+<blockquote>
+    gem install ten_pin_bowling-0.1.gem
+</blockquote>
 
 or download the source by cloning the git repository:
 
-<blockquote>git clone https://github.com/grimme-atix-de/Tenpinbowling.git</blockquote>
+<blockquote>
+   git clone https://github.com/grimme-atix-de/Tenpinbowling.git
+</blockquote>
+
 
 ## Design
 
@@ -27,7 +32,7 @@ The whole library for Ten Pin Bowling can be found in the lib Directory. There i
 ten_pin_bowling.rb that holds the module TenPinBowling.
 
 This module has two classes Frames and Frame in reference to the TenPinBowling namespace.
-`TenPinBowling::Frames` is an extension of the Array class but only holds up to ten `TenPinBowling::Frame`.
+`TenPinBowling::Frames` is an extension of the Array class but only holds up to ten `TenPinBowling::Frame`s.
 A frame is about the score of two or three (only optional for the tenth frame) thrown balls.
 
 The constructor of `TenPinBowling::Frames` takes either an array of `TenPinBowling::Frame` or and array of two
@@ -90,10 +95,10 @@ Let's look how its working.
 
 Let's say you made a game as follows:
 
-Frame1: 10, 0 => Strike
-Frame2: 10, 0 => Strike
-Frame3: 3,6
-Frame4: 1,4
+1. Frame1: 10, 0 => Strike
+2. Frame2: 10, 0 => Strike
+3. Frame3: 3,6
+4. Frame4: 1,4
 Rest are 0 frames to make the example more descriptive.
 
 Then you would call the program ten_pin_bowling as follows:
@@ -103,17 +108,19 @@ Then you would call the program ten_pin_bowling as follows:
 Just call `bin/ten_pin_bowling` without parameters:
 
 <blockquote>
-ruby ./bin/ten_pin_bowling
-Please type the score you have made with your last ten pin bowling game.
-Just type the score of each ball separated with a blank. Missing balls will be filled in with 0 value.
-Only the first 20 balls are accepted. If the last 'frame' is a strike two more balls are needed (22).
-If the last 'frame' is a spare one more ball is needed (21).
-You'll then see the overall score of the game.
-For a strike either a 10 or a 'X' is accepted.
-For a 0 ball either a 0 or any non number character is accepted.
-All other inputs are figures from 1..9.
-10 0 10 0 3 6 1 4
-The accumulated score of this game is 56
+<pre>
+    ruby ./bin/ten_pin_bowling
+    Please type the score you have made with your last ten pin bowling game.
+    Just type the score of each ball separated with a blank. Missing balls will be filled in with 0 value.
+    Only the first 20 balls are accepted. If the last 'frame' is a strike two more balls are needed (22).
+    If the last 'frame' is a spare one more ball is needed (21).
+    You'll then see the overall score of the game.
+    For a strike either a 10 or a 'X' is accepted.
+    For a 0 ball either a 0 or any non number character is accepted.
+    All other inputs are figures from 1..9.
+    10 0 10 0 3 6 1 4
+    The accumulated score of this game is 56
+</pre>
 </blockquote>
 
 ## Read from parameters
@@ -121,8 +128,10 @@ The accumulated score of this game is 56
 Just call `bin/ten_pin_bowling` with parameters as the balls being thrown.
 
 <blockquote>
-$ ruby ./bin/ten_pin_bowling 10 0 10 0 3 6 1 4
-The accumulated score of this game is 56
+<pre>
+    $ ruby ./bin/ten_pin_bowling 10 0 10 0 3 6 1 4
+    The accumulated score of this game is 56
+</pre>
 </blockquote>
 
 ## 2nd perfect game
@@ -130,7 +139,9 @@ The accumulated score of this game is 56
 This is the example for a perfect game. Note the x for strike and a or whatever character for 0.
 
 <blockquote>
-# Frames                   1     2     3     4     5     6     7     8    9    10
-ruby ./bin/ten_pin_bowling 10 0  10 0  10 0  10 0  10 0  10 0  10 0  x a  X 0  10 10 10
-The accumulated score of this game is 300
+<pre>
+    # Frames                   1     2     3     4     5     6     7     8    9    10
+    ruby ./bin/ten_pin_bowling 10 0  10 0  10 0  10 0  10 0  10 0  10 0  x a  X 0  10 10 10
+    The accumulated score of this game is 300
+</pre>
 </blockquote>
